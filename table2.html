@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/table2.css">
+ 
+
 
     <title>Leaderboards</title>
 </head>
@@ -40,6 +44,7 @@
     <tr class="bg-info">
         <th data-column="fullName" data-order="desc">Player</th>
         <th data-column="currentTeam" data-order="desc">Team</th>
+       
         <th data-column="fanPoints" data-order="desc">FP</th>
         <th data-column="gamesStarted" data-order="desc">GS</th>
         <th data-column="savePercentage" data-order="desc">Sv%</th>
@@ -47,6 +52,8 @@
         <th data-column="wins" data-order="desc">W</th>
         <th data-column="losses" data-order="desc">L</th>
         <th data-column="shutouts" data-order="desc">SO</th>
+
+
     </tr>
 
     <tbody id="myTable">
@@ -135,7 +142,21 @@
     {id: 8481519,}, //knight
   ]
 
+  //swiper scroll bar
+//   import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 
+//   // configure Swiper to use modules
+//   SwiperCore.use([Navigation, Pagination]);
+
+//   // init Swiper:
+//   const swiper = new Swiper(...);
+//   const swiper = new Swiper('.swiper-container', {
+//   // Optional parameters
+//   // And if we need scrollbar
+//   scrollbar: {
+//     el: '.swiper-scrollbar',
+//   },
+// });
   
   // for every player in the array, make a call to get their basic player data
   Promise.all(players.map((p) => $.ajax({
