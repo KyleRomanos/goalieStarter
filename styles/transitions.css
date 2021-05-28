@@ -1,0 +1,42 @@
+
+.summary {
+    animation: transitionIn 0.90s;
+}
+
+.wrapper {
+    animation: transitionIn 0.90s;
+}
+
+.body {
+    animation: transitionIn 1s;
+}
+
+.contact-form {
+    animation: transitionIn 1s;
+}
+
+.twitter {
+    animation: transitionIn 3s;
+}
+
+body {
+    animation: transitionIn 2s;
+}
+
+.table .striped {
+    animation: transitionIn 3s;
+}
+
+
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}

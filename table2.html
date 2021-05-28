@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/table2.css">
+
+    <title>Leaderboards</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a class ="current" href="index.html">Home</a></li>
+            <li class="navbar"><a class="current" href="news.html">News</a></li>
+            <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
+            <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
+            <br><br>
+    </nav>
+    <div class="btn-group" style="width: 100%">
+        <a href="table2.html" button class="goalies" style="width:33.3%">Goalies</button></a>
+        <a href="defense.html" button class="defense" style="width:33.3%">Defense</button></a>
+        <a href="forwards.html" button class="forwards" a style="width:33.3%">Forwards</button></a>
+      </div>
+
+<!-- <div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <input id="search-input" class="form-control" type="text">
+        </div>
+    </div>
+</div> -->
+
+<table class="table striped">
+    <tr class="bg-info">
+        <th data-column="fullName" data-order="desc">Player</th>
+        <th data-column="currentTeam" data-order="desc">Team</th>
+        <th data-column="fanPoints" data-order="desc">FP</th>
+        <th data-column="gamesStarted" data-order="desc">GS</th>
+        <th data-column="savePercentage" data-order="desc">Sv%</th>
+        <th data-column="goalsAgainstAverage" data-order="desc">GAA</th>
+        <th data-column="wins" data-order="desc">W</th>
+        <th data-column="losses" data-order="desc">L</th>
+        <th data-column="shutouts" data-order="desc">SO</th>
+    </tr>
+
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+</body>
+</html>
+<script>
+	let myArray = []
+  
+  // define an array of players with a name and id
+  let players = [
+  	{id: 8477424,}, //Saros
+    {id: 8471469,}, //Rinne
+    {id: 8478048,}, //Shesterkin
+    {id: 8480382,}, //Georgiev
+    {id: 8476234,}, //Kinkaid
+    {id: 8475809,}, //Wedgewood
+    {id: 8477180,}, //Dell
+    {id: 8478406,}, //Blackwood
+    {id: 8473575,}, //Varlamov
+    {id: 8478009,}, //Sorokin
+    {id: 8470880,}, //Elliot
+    {id: 8479394,}, //Hart
+    {id: 8477465,}, //Jarry
+    {id: 8479193,}, //DeSmith
+    {id: 8471695,}, //Rask
+    {id: 8478435,}, //Vladar
+    {id: 8480280,}, //Swayman
+    {id: 8474682,}, //Tokarski
+    {id: 8475622,}, //Hutton
+    {id: 8476999,}, //Ullmark
+    {id: 8471679,}, //Price
+    {id: 8474596,}, //Allen
+    {id: 8478916,}, //Daccord
+    {id: 8476341,}, //Forsberg
+    {id: 8476899,}, //Murray
+    {id: 8475883,}, //Andersen
+    {id: 8475789,}, //Campbell
+    {id: 8479496,}, //Big Save Dave Rittich
+    {id: 8473503,}, //Reimer
+    {id: 8475852,}, //Mrazek
+    {id: 8477968,}, //Nedeljkovic
+    {id: 8475683,}, //Bobrovsky
+    {id: 8476904,}, //Driedger
+    {id: 8470147,}, //McElhinney
+    {id: 8476883,}, //Vasilevskiy
+    {id: 8477970,}, //Vanecek
+    {id: 8478492,}, //Samsonov
+    {id: 8476876,}, //Subban
+    {id: 8480947,}, //Lankinen
+    {id: 8471306,}, //Greiss
+    {id: 8473541,}, //Bernier
+    {id: 8476412,}, //Binnington
+    {id: 8478024,}, //Husso
+    {id: 8474593,}, //Markstrom
+    {id: 8481501,}, //Zagidulin
+    {id: 8477992,}, //Johansson
+    {id: 8471227,}, //Dubnyk
+    {id: 8475831,}, //Grubauer
+    {id: 8469608,}, //Smith
+    {id: 8475156,}, //Koskinen
+    {id: 8474651,}, //Holtby
+    {id: 8477967,}, //Demko
+    {id: 8468011,}, //Miller
+    {id: 8476434,}, //Gibson
+    {id: 8476932,}, //Stolarz
+    {id: 8471418,}, //Khudobin
+    {id: 8479979,}, //Oettinger
+    {id: 8471734,}, //Quick
+    {id: 8477361,}, //Petersen
+    {id: 8474889,}, //Jones
+    {id: 8476914,}, //Korpisalo
+    {id: 8478007,}, //Merzlikins
+    {id: 8475660,}, //Talbot
+    {id: 8478039,}, //Kahkonen
+    {id: 8476316,}, //Brossoit
+    {id: 8476945,}, //Hellebuyck
+    {id: 8475311,}, //Kuemper
+    {id: 8477293,}, //Raanta
+    {id: 8478499,}, //Hill
+    {id: 8470594,}, //Flower
+    {id: 8475215,}, //Lehner
+    {id: 8481519,}, //knight
+  ]
+
+
+  
+  // for every player in the array, make a call to get their basic player data
+  Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
+        })
+  	)
+  ).then((response) => {
+  	// once the player data comes back from the api, assign it to the player array
+  	response.forEach((data, index) => { 
+    	players[index] = data.people[0];
+    });
+  }).then(() =>
+  // for every player in the array above, make the ajax call and get the stats data
+  	Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //see above
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/stats?stats=statsSingleSeason&season=20202021`
+        })
+    	)
+  	)
+  ).then((response) => {
+  	// once all the ajax calls are done we will have a response variable that has an array of responses from the API
+    // loop over those and assign the data from the API back to the players array
+    response.forEach((data, index) => { 
+    	Object.assign(players[index], data.stats[0].splits[0].stat);
+    });
+    
+    
+    // now that we have all the data, display it in the table
+    buildTable(players);
+  });
+
+  const getNestedValue = (obj, path) => {
+      try {
+          path.split('.').forEach((pathPart) => {
+              obj = obj[pathPart];
+          })
+      } finally {
+          return obj;
+      }
+  }
+
+
+	
+	function buildTable(players) {
+	  let table = document.getElementById('myTable')
+        table.innerHTML = ''
+    // loop through all players and add their row - note player name and teams are different sections of API**//
+    players.forEach((player) => {
+    	// const stats = player.stats.stats[0].splits[0].stat;
+	    let row = `<tr> 
+                  <td>${player.fullName}</td>
+                  <td>${player.currentTeam.name}</td>
+                  <td>${Math.floor(player.saves*0.10+player.wins*2+player.shutouts*5)}</td>
+                  <td>${player.gamesStarted}</td>
+                  <td>${player.savePercentage}</td>
+                  <td>${player.goalAgainstAverage}</td>
+                  <td>${player.wins}</td>
+                  <td>${player.losses}</td>
+                  <td>${player.shutouts}</td>
+	          		</tr>`;
+                
+	    table.innerHTML += row
+    });
+	}
+
+
+    $('th').on('click', function() {
+        let column = $(this).data('column')
+        let order = $(this).data('order')
+        console.log('column was clicked!', column, order)
+
+        if(order == 'asc') {
+            $(this).data('order', 'desc')
+            players = players.sort((a,b) =>a[column] > b[column] ? 1 : -1)
+        }else{
+            $(this).data('order', 'asc')
+            players = players.sort((a,b) =>a[column] < b[column] ? 1 : -1)
+        }
+        
+        buildTable(players)
+    })
+
+  
+
+//     $('#search-input').on('keyup', function(){
+//       let value = $(this).val()
+//       console.log('Value', value)
+//         let data = searchTable(value, myArray)
+//       buildTable(data)
+//   })
+
+// Sortable Table
+
+
+
+
+//   function searchTable(value, data) {
+//       let filteredData = []
+//       return filteredData
+
+//       for (let i=0; i<data.length; i++) {
+//         value = value.toLowerCase()
+//         let name = player.fullName.toLowerCase()
+
+//         if (name.includes(value)) {
+//             filteredData.push(data[i])
+//         }
+//       }
+//   }
+
+</script>

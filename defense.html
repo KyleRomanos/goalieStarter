@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/table2.css">
+
+    <title>Leaderboards</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a class ="current" href="index.html">Home</a></li>
+            <li class="navbar"><a class="current" href="news.html">News</a></li>
+            <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
+            <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
+            
+    </nav>
+    <div class="btn-group" style="width: 100%">
+        <a href="table2.html" button class="goalies" style="width:33.3%">Goalies</button></a>
+        <a href="defense.html" button class="defense" style="width:33.3%">Defense</button></a>
+        <a href="forwards.html" button class="forwards" a style="width:33.3%">Forwards</button></a>
+      </div>
+ 
+    <table class="table striped">
+        <tr class="bg-info">
+            <th data-column="fullName" data-order="desc">Player</th>
+            <th data-column="currentTeam" data-order="desc">Team</th>
+            <th data-column="games" data-order="desc">GP</th>
+            <th data-column="fanPoints" data-order="desc">FP</th>
+            <th data-column="goals" data-order="desc">G</th>
+            <th data-column="assists" data-order="desc">A</th>
+            <th data-column="points" data-order="desc">P</th>
+            <th data-column="powerPlayPoints" data-order="desc">PPP</th>
+            <th data-column="hits" data-order="desc">H</th>
+            <th data-column="blocked" data-order="desc">B</th>
+            <th data-column="shots" data-order="desc">SOG</th>
+            <th data-column="timeOnIcePerGame" data-order="desc">TOI</th>
+            <th data-column="pim" data-order="desc">PIM</th>
+            <th data-column="shotPct" data-order="desc">Sh%</th>
+            <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPT</th>
+        </tr>
+    
+        <tbody id="myTable">
+            
+        </tbody>
+    </table>
+    
+    
+    </body>
+    </html>
+    <script>
+        // let myArray = []
+
+        //use fetch code below to find team numbers//
+        // https://statsapi.web.nhl.com/api/v1/teams
+
+        //how to find roster for NY rangers, change number for each team. Note that Vegas, Jets, etc are in the 50's
+        // https://statsapi.web.nhl.com/api/v1/teams/2/roster
+
+        //retrieve stats for one player add in unique ID. See Mika Zibanejad stats below
+        // https://statsapi.web.nhl.com/api/v1/people/8476459
+
+    
+        fetch('https://statsapi.web.nhl.com/api/v1/teams/25/roster')
+    .then(res => res.json())
+    .then(data => console.log(data))
+      
+      // define an array of players with a name and id
+      let players = [
+      {id: 8474056,},//P.K Subban
+      {id: 8476923,},//Severson
+      {id: 8480883,},//Ty smith
+      {id: 8475181,},//Leddy
+      {id: 8476917,},//Pelech
+      {id: 8477506,},//Pulock
+      {id: 8480865,},//Dobson
+      {id: 8476885,},//Trouba
+      {id: 8479323,},//Fox
+      {id: 8479324,},//Lindgren
+      {id: 8480817,},//K'andre Miller
+      {id: 8476906,},//Gostisbehere
+      {id: 8478500,},//Provorov
+      {id: 8471724,},//Letang
+      {id: 8476422,},//Mike Reilly
+      {id: 8476891,},//grzelyck
+      {id: 8479325,},//McAvoy
+      {id: 8477499,},//Ristolainen
+      {id: 8480839,},//Dahlin
+      {id: 8470642,},//Weber
+      {id: 8473507,},//Petry
+      {id: 8481014,},//Romanov
+      {id: 8478469,},//Chabot
+      {id: 8474162,},//Muzzin
+      {id: 8474673,},//Brodie
+      {id: 8476853,},//Morgan Rielly
+      {id: 8480873,},//Sandin
+      {id: 8476462,},//Hamilton
+      {id: 8476958,},//Slavin
+      {id: 8477488,},//Pesce
+      {id: 8475462,},//Gudas
+      {id: 8477932,},//Ekblad
+      {id: 8471735,},//Yandle
+      {id: 8477346,},//Weegar
+      {id: 8478055,},//Forsling
+      {id: 8474151,},//McDonagh
+      {id: 8475167,},//Hedman
+      {id: 8475233,},//Savard
+      {id: 8478416,},//Cernak
+      {id: 8479410,},//Sergachev
+      {id: 8474590,},//Carlson
+      {id: 8474602,},//Schultz
+      {id: 8475200,},//Orlov
+      {id: 8475455,},//Dillon
+      {id: 8477507,},//Zadorov
+      {id: 8480871,},//Boqvist 
+      {id: 8470281,},//Keith
+      {id: 8477043,},//Djoss
+      {id: 8479425,},//Hronek
+      {id: 8474600,},//Josi
+      {id: 8475176,},//Ellis
+      {id: 8475218,},//Ekholm
+      {id: 8475753,},//Faulk
+      {id: 8476792,},//Krug
+      {id: 8476892,},//Parayko
+      {id: 8470966,},//Giordano
+      {id: 8478396,},//Hanifin
+      {id: 8478397,},//Razmoos Andersson
+      {id: 8477435,},//Graves
+      {id: 8478038,},//Toews
+      {id: 8479398,},//Girard
+      {id: 8480069,},//Makar
+      {id: 8475197,},//Barrie
+      {id: 8477498,},//Nurse
+      {id: 8480800,},//Hughes
+      {id: 8474574,},//Myers
+      {id: 8474031,},//Shattenkirk
+      {id: 8475764,},//Fowler
+      {id: 8482142,},//Drysdale
+      {id: 8475906,},//Klingberg
+      {id: 8476902,},//Lindell
+      {id: 8480036,},//Heiskanen
+      {id: 8474563,},//Doughty 
+      {id: 8470613,},//Burns
+      {id: 8474578,},//Karlsson
+      {id: 8479983,},//Ferraro
+      {id: 8481812,},//Knyzhov
+      {id: 8478460,},//Werenski
+      {id: 8474584,},//Del Zotto
+      {id: 8477495,},//Seth Jones
+      {id: 8470600,}, //R Suter 
+      {id: 8474716,},//Spurgeon
+      {id: 8476463,},//Brodin
+      {id: 8476856,},//Dumba
+      {id: 8477369,},//Soucy
+      {id: 8477504,},//Morrissey
+      {id: 8480145,},//Pionk
+      {id: 8471274,},//Goligoski
+      {id: 8475171,},//OEL
+      {id: 8479345,},//Chychrun
+      {id: 8477851,},//Oesterle
+      {id: 8474166,},//Martinez
+      {id: 8474565,},//Pietrangelo
+      {id: 8477447,},//Theodore
+      {id: 8479980,},//Hague
+      ]
+
+      Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
+        })
+  	)
+  ).then((response) => {
+  	// once the player data comes back from the api, assign it to the player array
+  	response.forEach((data, index) => { 
+    	players[index] = data.people[0];
+    });
+  }).then(() =>
+  // for every player in the array above, make the ajax call and get the stats data
+  	Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //see above
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/stats?stats=statsSingleSeason&season=20202021`
+        })
+    	)
+  	)
+  ).then((response) => {
+  	// once all the ajax calls are done we will have a response variable that has an array of responses from the API
+    // loop over those and assign the data from the API back to the players array
+    response.forEach((data, index) => { 
+    	Object.assign(players[index], data.stats[0].splits[0].stat);
+    });
+    
+    
+    // now that we have all the data, display it in the table
+    buildTable(players);
+  });
+
+  const getNestedValue = (obj, path) => {
+      try {
+          path.split('.').forEach((pathPart) => {
+              obj = obj[pathPart];
+          })
+      } finally {
+          return obj;
+      }
+  }
+	
+	function buildTable(players) {
+	  let table = document.getElementById('myTable')
+        table.innerHTML = ''
+    // loop through all players and add their row - note player name and teams are different sections of API**//
+    players.forEach((player) => {
+    	// const stats = player.stats.stats[0].splits[0].stat;
+	    let row = `<tr> 
+                  <td>${player.fullName}</td>
+                  <td>${player.currentTeam.name}</td>
+                  <td>${player.games}</td>
+                  <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
+                  <td>${player.goals}</td>
+                  <td>${player.assists}</td>
+                  <td>${player.points}</td>
+                  <td>${player.powerPlayPoints}</td>
+                  <td>${player.hits}</td>
+                  <td>${player.blocked}</td>
+                  <td>${player.shots}</td>
+                  <td>${player.timeOnIcePerGame}</td>
+                  <td>${player.pim}</td>
+                  <td>${player.shotPct}</td>
+                  <td>${player.powerPlayTimeOnIcePerGame}</td>
+	          		</tr>`;
+                
+	    table.innerHTML += row
+    });
+	}
+
+
+    $('th').on('click', function() {
+        let column = $(this).data('column')
+        let order = $(this).data('order')
+        console.log('column was clicked!', column, order)
+
+        if(order == 'asc') {
+            $(this).data('order', 'desc')
+            players = players.sort((a,b) =>a[column] > b[column] ? 1 : -1)
+        }else{
+            $(this).data('order', 'asc')
+            players = players.sort((a,b) =>a[column] < b[column] ? 1 : -1)
+        }
+
+        buildTable(players)
+    })
+
+    //fetch API info when needed 
+// fetch('https://statsapi.web.nhl.com/api/v1/teams/3/roster')
+//     .then(res => res.json())
+//     .then(data => console.log(data))
+</script>

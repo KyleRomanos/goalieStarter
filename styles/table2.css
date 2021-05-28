@@ -1,0 +1,79 @@
+th{
+    background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: whitesmoke;
+    transition-delay: 90ms;
+    transition-property: color;
+    
+}
+
+.table.striped th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+   
+}
+
+.bg-info, th {
+    background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+}
+
+th:hover{
+    color: orange;
+    cursor: pointer;
+}
+tr {
+    color: orange;
+    transition-delay: 90ms;
+    transition-property: color;
+    overflow: scroll;
+    font-size: 10px;
+}
+
+
+td {
+    color: whitesmoke;
+   
+    
+}
+th {
+    font-size: 13.5px;
+}
+td:hover{
+    color: orange;
+    cursor: pointer;
+}
+
+
+.bg-info {
+    background-color: black;
+    color: white;
+    overflow: scroll;
+
+}
+
+
+@media screen and (max-width: 770px) {
+
+th {
+    font-size: 11px;
+}
+td {
+    font-size: 9.5px;
+}
+
+}
+
+@media screen and (max-width: 414px) {
+
+    th {
+        font-size: 10.5px;
+    }
+    td {
+        font-size: 9px;
+    }
+    
+    }
+
+    

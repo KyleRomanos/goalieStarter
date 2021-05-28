@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/table2.css">
+
+    <title>Leaderboards</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="navbar"><a class ="current" href="index.html">Home</a></li>
+            <li class="navbar"><a class="current" href="news.html">News</a></li>
+            <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
+            <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
+            
+    </nav>
+    <div class="btn-group" style="width: 100%">
+        <a href="table2.html" button class="goalies" style="width:33.3%">Goalies</button></a>
+        <a href="defense.html" button class="defense" style="width:33.3%">Defense</button></a>
+        <a href="forwards.html" button class="forwards" a style="width:33.3%">Forwards</button></a>
+      </div>
+ 
+    <table class="table striped">
+        <tr class="bg-info">
+            <th data-column="fullName" data-order="desc">Player</th>
+            <th data-column="currentTeam" data-order="desc">Team</th>
+            <th data-column="games" data-order="desc">GP</th>
+            <th data-column="fanPoints" data-order="desc">FP</th>
+            <th data-column="goals" data-order="desc">G</th>
+            <th data-column="assists" data-order="desc">A</th>
+            <th data-column="points" data-order="desc">P</th>
+            <th data-column="powerPlayPoints" data-order="desc">PPP</th>
+            <th data-column="hits" data-order="desc">H</th>
+            <th data-column="blocked" data-order="desc">B</th>
+            <th data-column="shots" data-order="desc">SOG</th>
+            <th data-column="timeOnIcePerGame" data-order="desc">TOI</th>
+            <th data-column="pim" data-order="desc">PIM</th>
+            <th data-column="shotPct" data-order="desc">Sh%</th>
+            <th data-column="shortHandedPoints" data-order="desc">SHP</th>
+            <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPT</th>
+            
+        </tr>
+    
+        <tbody id="myTable">
+            
+        </tbody>
+    </table>
+    
+    
+    </body>
+    </html>
+    <script>
+        // let myArray = []
+
+    fetch('https://statsapi.web.nhl.com/api/v1/people/8476459/stats?stats=statsSingleSeason&season=20202021')
+    .then(res => res.json())
+    .then(data => console.log(data))
+      
+      // define an array of players with a name and id
+      let players = [
+          //NJD
+      {id: 8477425,},//Wood
+      {id: 8478401,},//Severson
+      {id: 8479407,},//Bratt
+      {id: 8480002,},//Hischier
+      {id: 8481068,},//Sharangovich
+      {id: 8481559,},//Hughes
+      {id: 8479511,},//Kukokkanen
+        //NYI
+      {id: 8473533,},//Lee
+      {id: 8474573,},//Bailey
+      {id: 8474586,},//Eberle
+      {id: 8475151,},//Palmieri
+      {id: 8476419,},//Pageau
+      {id: 8475754,},//Nelson
+      {id: 8478445,},//Barzal
+      {id: 8478463,},//Beauvillier
+        //NYR
+      {id: 8475184,},//Kreider
+      {id: 8476278,},//Blackwell
+      {id: 8476458,},//Strome
+      {id: 8476459,},//ZIB
+      {id: 8477402,},//Buchnevich
+      {id: 8478550,},//Breadman
+      {id: 8480833,},//Kravtsov
+      {id: 8481554,},//Kakko
+      {id: 8482109,},//Lafreniere
+        //PHI
+      {id: 8473512,},//Giroux
+      {id: 8474037,},//jvr
+      {id: 8474161,},//Voracek
+      {id: 8475763,},//Hayes
+      {id: 8476461,},//Couturier
+      {id: 8478439,},//Konecny
+      {id: 8480797,},//Farabee
+        //PIT
+      {id: 8479293,},//Tanev
+      {id: 8471215,},//Malkin
+      {id: 8471675,},//Crosby
+      {id: 8475810,},//Rust
+      {id: 8477404,},//Guentzel
+      {id: 8477953,},//Kapanen
+      {id: 8477955,},//McCann
+        //BOS
+      {id: 8470638,},//Bergeron
+      {id: 8471276,},//Krejci
+      {id: 8473419,},//Marchand
+      {id: 8475791,},//Hall
+      {id: 8477941,},//Ritchie
+      {id: 8477956,},//Pasta
+      {id: 8478498,},//debrusk
+      {id: 8475225,},//Smith
+        //BUF
+      {id: 8478403,},//Eichel
+      {id: 8475784,},//Skinner
+      {id: 8477933,},//Reinhart
+      {id: 8478109,},//Olofsson
+      {id: 8479999,},//Mittelstadt
+      {id: 8481528,},//Cozens
+        //MON
+      {id: 8475848,},//Gallagher
+      {id: 8477494,},//Drouin
+      {id: 8470595,},//E staal
+      {id: 8470621,},//Perry
+      {id: 8475726,},//Toffoli
+      {id: 8476479,},//Danault
+      {id: 8476981,},//Anderson
+      {id: 8480018,},//Suzuki
+      {id: 8481540,},//Caufield
+      {id: 8475193,},//Tatar
+      {id: 8480829,},//Kotkaniemi
+        //OTT
+      {id: 8474149,},//Dadonov
+      {id: 8477015,},//Brown
+      {id: 8480064,},//Norris
+      {id: 8480208,},//Batherson
+      {id: 8480801,},//Brady Tkachuk
+      {id: 8482116,},//Stuezle
+        //TOR
+      {id: 8466138,},//Jumbo Joe
+      {id: 8469455,},//Spezza
+      {id: 8473422,},//Tavares
+      {id: 8475786,},//Hyman
+      {id: 8476851,},//Galchenyuk
+      {id: 8477939,},//Nylander
+      {id: 8478483,},//Marner
+      {id: 8479318,},//AM34
+      {id: 8481624,},//Mikheyev
+        //CAR
+      {id: 8473533,},//J staal
+      {id: 8475799,}, //Niederreiter
+      {id: 8476389,},//Trochek
+      {id: 8476882,},//Turbo
+      {id: 8478427,},//Aho
+      {id: 8480039,},//Necas
+      {id: 8480830,},//Svech
+      {id: 8477998,},//Foegele
+        //FLA
+      {id: 8471887,},//Hornqvist
+      {id: 8476456,},//Huberdeau
+      {id: 8477038,},//Gusev
+      {id: 8477407,},//Duclair
+      {id: 8477409,},//Verhaege
+      {id: 8477493,},//Maximus Barkovius
+      {id: 8477505,},//Wennberg
+      {id: 8477935,},//Bennet
+      {id: 8478366,},//Vatrano
+      
+        //TB
+      {id: 8474564,},//Stammer
+      {id: 8473986,},//Killorn
+      {id: 8476292,},//Palat
+      {id: 8476399,},//Coleman
+      {id: 8476826,},//Gourde
+      {id: 8478010,},//Point
+      {id: 8478519,},//Cirelli
+      {id: 8479718,},//Barre-Boulet
+        //WAS
+      {id: 8471698,},//Oshie
+      {id: 8473563,},//Backstrom
+      {id: 8475744,},//Kuz
+      {id: 8476880,},//Wilson
+      {id: 8477511,},//Mantha
+      {id: 8471214,},//Ovechkin
+      {id: 8477839,},//Sheary
+      {id: 8474189,}, //Eller
+        //CHI
+      {id: 8474141,},//Kaner
+      {id: 8477330,},//Kubalik
+      {id: 8479337,},//Debrincat
+      {id: 8479542,},//Hagel
+      {id: 8480459,},//Suter
+      {id: 8481523,},//Dach
+      {id: 8480798,},//Kurashev
+        //DET
+      {id: 8477479,},//Bertuzzi
+      {id: 8477952,},//Fabbri
+      {id: 8477944,},//Vrana
+      {id: 8477946,},//Larkin
+      {id: 8480821,},//Zadina
+      {id: 8477454,},//Erne
+        //NSH
+      {id: 8476887,},//Forsberg
+      {id: 8478042,},//Arvidsson
+      {id: 8480009,}, //Tolvanen
+      {id: 8475798,},//Granlund
+      {id: 8475714,},//Jankrok
+        //STL
+      {id: 8474884,},//Hoff
+      {id: 8475170,},//Schenn
+      {id: 8475765,},//Tarasenko
+      {id: 8475768,},//Schwartz
+      {id: 8479385,},//Kyrou
+      {id: 8474102,},//Perron
+      {id: 8475158,},//O'reilly
+        //CGY
+      {id: 8477496,},//Lindholm
+      {id: 8477497,},//Monahan
+      {id: 8478233,},//Mangiapane
+      {id: 8479314,},//M Tkhachuk
+      {id: 8473473,},//Lucic
+      {id: 8474150,},//Backlund
+      {id: 8476346,}, //Jahnny Hackey
+        //COL
+      {id: 8475172,},//Kadri
+      {id: 8475820,},//Donskoi
+      {id: 8476438,},//Saad
+      {id: 8476455,},//Landeskog
+      {id: 8477444,},//Burakovsky
+      {id: 8477492,},//Mackinnon
+      {id: 8477501,},//Nichuskin
+      {id: 8478420,},//Rantanen
+        //EDM
+      {id: 8476454,},//RNH
+      {id: 8477934,},//Draisatl
+      {id: 8478402,},//McDavid
+      {id: 8479344,},//Puljujarvi
+      {id: 8479977,},//Yamamoto
+        //VAN
+      {id: 8476468,},//J.T Miller
+      {id: 8477500,},//Horvat
+      {id: 8478444,}, //Brock
+      {id: 8481535,},//Hoglander
+      {id: 8480012,},//Petersson
+        //ANA
+      {id: 8474641,},//Henrique
+      {id: 8476483,},//Ricky Racks
+      {id: 8479351,},//Steel
+      {id: 8480031,},//Comtois
+      {id: 8480186,},//Volkov
+      {id: 8481533,},//Zegras
+        //DAL
+      {id: 8471228,},//Radulov
+      {id: 8470794,},//Pavelski
+      {id: 8475794,},//Seguin
+      {id: 8478449,},//Hintz
+      {id: 8478495,},//Gurianov
+      {id: 8480027,},//Robertson
+      {id: 8473994,},//Benn
+        //LA
+      {id: 8470606,},//Brown
+      {id: 8471685,},//Kopitar
+      {id: 8477960,},//Kempe
+      {id: 8480014,},//Vilardi
+      {id: 8480113,},//Iafallo
+      {id: 8482124,},//Byfield
+      {id: 8476960,},//Athanasiou
+        //SJ
+      {id: 8474053,},//Couture
+      {id: 8475169,},//Evander Kane
+      {id: 8476881,},//Hertl
+      {id: 8478414,},//Meier
+      {id: 8482222,},//Barabanov
+      {id: 8478099,},//Labanc
+      {id: 8477987,},//Donato
+        //CBJ
+      {id: 8474715,},//Atkinson
+      {id: 8477416,},//Bjorkstrand
+      {id: 8477503,},//Domi
+      {id: 8478458,},//Roslovic
+      {id: 8479339,},//Laine
+        //MIN
+      {id: 8474009,},//Bonino
+      {id: 8475220,},//Foligno
+      {id: 8475692,},//Zuccarello
+      {id: 8477942,},//Fiala
+      {id: 8478413,},//Greenway
+      {id: 8478493,},//Eriksson Ek
+      {id: 8478864,},//Kaprizov
+        //WPG
+      {id: 8471218,},//Wheeler
+      {id: 8471669,},//Stastny
+      {id: 8476460,},//Scheifele
+      {id: 8477429,},//Copp
+      {id: 8477940,},//Ehlers
+      {id: 8478398,},//Connor
+      {id: 8479400,},//Dubois
+      {id: 8478891,},//Appleton
+        //ARI
+      {id: 8473548,},//Kessel
+      {id: 8477951,},//Schmaltz
+      {id: 8477989,},//Dvorak
+      {id: 8478047,},//Bunting
+      {id: 8478474,},//Crouse
+      {id: 8478856,},//Garland
+      {id: 8479343,},//Keller
+        //VGK
+      {id: 8474157,},//Pacioretty
+      {id: 8475913,},//Stone
+      {id: 8476448,},//Karlsson
+      {id: 8476539,},//Marchessault
+      {id: 8476905,},//Stephenson
+      {id: 8477949,},//Tuch
+      ]
+
+      Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
+        })
+  	)
+  ).then((response) => {
+  	// once the player data comes back from the api, assign it to the player array
+  	response.forEach((data, index) => { 
+    	players[index] = data.people[0];
+    });
+  }).then(() =>
+  // for every player in the array above, make the ajax call and get the stats data
+  	Promise.all(players.map((p) => $.ajax({
+        method: 'GET',
+        async: true, //see above
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/stats?stats=statsSingleSeason&season=20202021`
+        })
+    	)
+  	)
+  ).then((response) => {
+  	// once all the ajax calls are done we will have a response variable that has an array of responses from the API
+    // loop over those and assign the data from the API back to the players array
+    response.forEach((data, index) => { 
+    	Object.assign(players[index], data.stats[0].splits[0].stat);
+    });
+
+    console.log(players)
+
+    // <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
+    // { 
+    //   ...player,
+    //   fanPoints: 
+    // }
+    
+    
+    // now that we have all the data, display it in the table
+    buildTable(players);
+  });
+
+  const getNestedValue = (obj, path) => {
+      try {
+          path.split('.').forEach((pathPart) => {
+              obj = obj[pathPart];
+          })
+      } finally {
+          return obj;
+      }
+  }
+
+  async function getFanPoints(players) {
+    return Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)
+  }
+	
+	function buildTable(players) {
+	  let table = document.getElementById('myTable')
+        table.innerHTML = ''
+    // loop through all players and add their row - note player name and teams are different sections of API**//
+    players.forEach((player) => {
+    	// const stats = player.stats.stats[0].splits[0].stat;
+	    let row = `<tr> 
+                  <td>${player.fullName}</td>
+                  <td>${player.currentTeam.name}</td>
+                  <td>${player.games}</td>
+                  <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
+                  <td>${player.goals}</td>
+                  <td>${player.assists}</td>
+                  <td>${player.points}</td>
+                  <td>${player.powerPlayPoints}</td>
+                  <td>${player.hits}</td>
+                  <td>${player.blocked}</td>
+                  <td>${player.shots}</td>
+                  <td>${player.timeOnIcePerGame}</td>
+                  <td>${player.pim}</td>
+                  <td>${player.shotPct}</td>
+                  <td>${player.shortHandedPoints}</td>
+                  <td>${player.powerPlayTimeOnIcePerGame}</td>
+                  
+	          		</tr>`;
+                
+	    table.innerHTML += row
+    });
+	}
+
+
+    $('th').on('click', function() {
+        let column = $(this).data('column')
+        let order = $(this).data('order')
+        console.log('column was clicked!', column, order)
+
+        if(order == 'asc') {
+            $(this).data('order', 'desc')
+            players = players.sort((a,b) =>a[column] > b[column] ? 1 : -1)
+        }else{
+            $(this).data('order', 'asc')
+            players = players.sort((a,b) =>a[column] < b[column] ? 1 : -1)
+        }
+
+        buildTable(players)
+    })
+
+    //fetch API info when needed 
+// fetch('https://statsapi.web.nhl.com/api/v1/teams/3/roster')
+//     .then(res => res.json())
+//     .then(data => console.log(data))
+</script>
