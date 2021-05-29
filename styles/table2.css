@@ -9,41 +9,52 @@ th{
    position: -webkit-sticky;
    position: sticky;
    top: 0;
-   z-index: 1;
+   z-index: 5;
    left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
     
 }
 
-.table.striped tr > th {
+.table.striped {
+    color: red;
+    position: relative;
+}
+
+.table.striped th {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1;
     left: 0;
+   
 }
 
 .table.striped th:first-child {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 3;
+    z-index: 4;
     left: 0;
+   
 }
 
-.table.striped td > tr {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 3;
-    left: 0; 
-}
-
-.table.striped tr :first-child {
+/* .table.striped td > tr {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 4;
     left: 0; 
+} */
+
+.table.striped tr :first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    /* z-index: 3; */
+    left: 0; 
+    
     background-color: rgb(49, 47, 47);;
 }
 
@@ -67,7 +78,7 @@ tr {
     color: orange;
     transition-delay: 90ms;
     transition-property: color;
-    overflow: scroll;
+    /* overflow: scroll; */
     font-size: 10px;
 }
 
@@ -89,7 +100,7 @@ td:hover{
 .bg-info {
     background-color: black;
     color: white;
-    overflow: scroll;
+    /* overflow: scroll; */
 
 }
 
@@ -122,9 +133,6 @@ td {
        
     }
 
-    .table.striped {
-        overflow-y: auto;
-    }
     
     }
 

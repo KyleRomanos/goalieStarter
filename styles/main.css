@@ -101,11 +101,7 @@ nav{
     display: flex;
 }
 
-.table.striped th {
-    position: sticky;
-    top: 0;
-    
-}
+
 
 .btn-group{
     cursor: pointer;
@@ -130,10 +126,10 @@ nav{
     font-size: 11px;       
 }
 
-/* .bg-info {
+.bg-info {
  background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
  font-size: 12px;
- position: sticky;
+ /* position: sticky; */
 top: 0;
 }
 
@@ -142,9 +138,9 @@ th{
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-size: 12px;
-    position: sticky;
+    /* position: sticky; */
    top: 0;
-} */
+}
 
 td {
     font-size: 10.5px;
