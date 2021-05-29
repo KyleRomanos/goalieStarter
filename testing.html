@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/table2.css">
- 
+    <link rel="stylesheet" href="styles/testing.css">
 
 
     <title>Leaderboards</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
         <ul>
             <li class="navbar"><a class ="current" href="index.html">Home</a></li>
@@ -30,19 +31,12 @@
         <a href="forwards.html" button class="forwards" a style="width:33.3%">Forwards</button></a>
       </div>
 
-<!-- <div class="row">
-    <div class="col">
-        <div class="card card-body">
-            <input id="search-input" class="form-control" type="text">
-        </div>
-    </div>
-</div> -->
+<div>
 
-<div class="leaderboard">
-<table class="table striped">
-    <thead>
+<table class="table-striped">
+  <thead>
     <tr class="bg-info">
-        <th data-column="fullName" data-order="desc">Player</th>
+      <th data-column="fullName" data-order="desc">Player</th>
         <th data-column="currentTeam" data-order="desc">Team</th>
        
         <th data-column="fanPoints" data-order="desc">FP</th>
@@ -53,19 +47,18 @@
         <th data-column="losses" data-order="desc">L</th>
         <th data-column="shutouts" data-order="desc">SO</th>
 
-
     </tr>
-    </thead>
-
-    <tbody id="myTable">
-        
-    </tbody>
+  </thead>
+  <tbody>
+  
+  </tbody>
 </table>
+  
 </div>
-</body>
-</html>
+
 <script>
-	let myArray = []
+
+let myArray = []
   
   // define an array of players with a name and id
   let players = [
@@ -188,8 +181,6 @@
       }
   }
 
-
-	
 	function buildTable(players) {
 	  let table = document.getElementById('myTable')
         table.innerHTML = ''
@@ -229,32 +220,5 @@
         buildTable(players)
     })
 
-  
-
-//     $('#search-input').on('keyup', function(){
-//       let value = $(this).val()
-//       console.log('Value', value)
-//         let data = searchTable(value, myArray)
-//       buildTable(data)
-//   })
-
-// Sortable Table
-
-
-
-
-//   function searchTable(value, data) {
-//       let filteredData = []
-//       return filteredData
-
-//       for (let i=0; i<data.length; i++) {
-//         value = value.toLowerCase()
-//         let name = player.fullName.toLowerCase()
-
-//         if (name.includes(value)) {
-//             filteredData.push(data[i])
-//         }
-//       }
-//   }
 
 </script>
