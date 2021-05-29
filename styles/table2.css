@@ -36,6 +36,11 @@ thead tr > th {
     top: 0;
   }
 
+  .table th:hover {
+  color: orange;
+  cursor: pointer;
+  }
+
   thead tr > :first-child {
     z-index:3;
     left:0;
