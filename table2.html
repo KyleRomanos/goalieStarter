@@ -30,13 +30,7 @@
         <a href="forwards.html" button class="forwards" a style="width:33.3%">Forwards</button></a>
       </div>
 
-<!-- <div class="row">
-    <div class="col">
-        <div class="card card-body">
-            <input id="search-input" class="form-control" type="text">
-        </div>
-    </div>
-</div> -->
+
 
 <div class="leaderboard">
 <table class="table striped">
@@ -52,6 +46,7 @@
         <th data-column="wins" data-order="desc">W</th>
         <th data-column="losses" data-order="desc">L</th>
         <th data-column="shutouts" data-order="desc">SO</th>
+        <th data-column="saves" data-order="desc">Sv</th>
 
 
     </tr>
@@ -65,12 +60,14 @@
 </body>
 </html>
 <script>
-	let myArray = []
+	// let myArray = []
+    // fetch('https://statsapi.web.nhl.com/api/v1/people/8476459/stats?stats=statsSingleSeason&season=20202021')
+    // .then(res => res.json())
+    // .then(data => console.log(data))
   
   // define an array of players with a name and id
   let players = [
-  	{id: 8477424,}, //Saros
-    {id: 8471469,}, //Rinne
+
     {id: 8478048,}, //Shesterkin
     {id: 8480382,}, //Georgiev
     {id: 8476234,}, //Kinkaid
@@ -141,6 +138,8 @@
     {id: 8470594,}, //Flower
     {id: 8475215,}, //Lehner
     {id: 8481519,}, //knight
+    {id: 8477424,}, //Saros
+    {id: 8471469,}, //Rinne
   ]
 
 
@@ -148,7 +147,7 @@
   // for every player in the array, make a call to get their basic player data
   Promise.all(players.map((p) => $.ajax({
         method: 'GET',
-        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        async: true, 
         url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
         })
   	)
@@ -172,6 +171,14 @@
     response.forEach((data, index) => { 
     	Object.assign(players[index], data.stats[0].splits[0].stat);
     });
+
+    console.log(players)
+
+    // <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
+    // { 
+    //   ...player,
+    //   fanPoints: 
+    // }
     
     
     // now that we have all the data, display it in the table
@@ -188,13 +195,16 @@
       }
   }
 
-
+  async function getFanPoints(players) {
+    return Math.floor(player.wins*2 + player.saves*0.10 + player.shutouts*5)
+  }
 	
 	function buildTable(players) {
 	  let table = document.getElementById('myTable')
         table.innerHTML = ''
     // loop through all players and add their row - note player name and teams are different sections of API**//
     players.forEach((player) => {
+        console.log(player)
     	// const stats = player.stats.stats[0].splits[0].stat;
 	    let row = `<tr> 
                   <td>${player.fullName}</td>
@@ -206,7 +216,9 @@
                   <td>${player.wins}</td>
                   <td>${player.losses}</td>
                   <td>${player.shutouts}</td>
-	          		</tr>`;
+                  <td>${player.saves}</td>
+                  
+                  </tr>`;
                 
 	    table.innerHTML += row
     });
@@ -216,7 +228,7 @@
     $('th').on('click', function() {
         let column = $(this).data('column')
         let order = $(this).data('order')
-        console.log('column was clicked!', column, order)
+       
 
         if(order == 'asc') {
             $(this).data('order', 'desc')
@@ -225,36 +237,9 @@
             $(this).data('order', 'asc')
             players = players.sort((a,b) =>a[column] < b[column] ? 1 : -1)
         }
-        
+
         buildTable(players)
     })
 
-  
-
-//     $('#search-input').on('keyup', function(){
-//       let value = $(this).val()
-//       console.log('Value', value)
-//         let data = searchTable(value, myArray)
-//       buildTable(data)
-//   })
-
-// Sortable Table
-
-
-
-
-//   function searchTable(value, data) {
-//       let filteredData = []
-//       return filteredData
-
-//       for (let i=0; i<data.length; i++) {
-//         value = value.toLowerCase()
-//         let name = player.fullName.toLowerCase()
-
-//         if (name.includes(value)) {
-//             filteredData.push(data[i])
-//         }
-//       }
-//   }
-
+   
 </script>
