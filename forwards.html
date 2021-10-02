@@ -347,7 +347,7 @@
 
       Promise.all(players.map((p) => $.ajax({
         method: 'GET',
-        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        async: true, 
         url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
         })
   	)
@@ -371,14 +371,6 @@
     response.forEach((data, index) => { 
     	Object.assign(players[index], data.stats[0].splits[0].stat);
     });
-
-    console.log(players)
-
-    // <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
-    // { 
-    //   ...player,
-    //   fanPoints: 
-    // }
     
     
     // now that we have all the data, display it in the table
@@ -393,10 +385,6 @@
       } finally {
           return obj;
       }
-  }
-
-  async function getFanPoints(players) {
-    return Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)
   }
 	
 	function buildTable(players) {
@@ -420,9 +408,7 @@
                   <td>${player.timeOnIcePerGame}</td>
                   <td>${player.pim}</td>
                   <td>${player.shotPct}</td>
-                  <td>${player.shortHandedPoints}</td>
                   <td>${player.powerPlayTimeOnIcePerGame}</td>
-                  
 	          		</tr>`;
                 
 	    table.innerHTML += row
@@ -446,8 +432,9 @@
         buildTable(players)
     })
 
-    //fetch API info when needed 
+//     fetch API info when needed 
 // fetch('https://statsapi.web.nhl.com/api/v1/teams/3/roster')
 //     .then(res => res.json())
 //     .then(data => console.log(data))
+
 </script>
