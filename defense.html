@@ -56,7 +56,8 @@
             <th data-column="timeOnIcePerGame" data-order="desc">TOI</th>
             <th data-column="pim" data-order="desc">PIM</th>
             <th data-column="shotPct" data-order="desc">Sh%</th>
-            <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPT</th>
+            <th data-column="shortHandedPoints" data-order="desc">SHP%</th>
+            <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPTOI</th>
         </tr>
         </thead>
     
@@ -68,26 +69,26 @@
     </body>
     </html>
     <script>
-        // let myArray = []
+        let myArray = []
 
-        //use fetch code below to find team numbers//
+        // use fetch code below to find team numbers//
         // https://statsapi.web.nhl.com/api/v1/teams
 
-        //how to find roster for NY rangers, change number for each team. Note that Vegas, Jets, etc are in the 50's
+        // how to find roster for NY rangers, change number for each team. Note that Vegas, Jets, etc are in the 50's
         // https://statsapi.web.nhl.com/api/v1/teams/2/roster
 
-        //retrieve stats for one player add in unique ID. See Mika Zibanejad stats below
+        // retrieve stats for one player add in unique ID. See Mika Zibanejad stats below
         // https://statsapi.web.nhl.com/api/v1/people/8476459
 
     
-        fetch('https://statsapi.web.nhl.com/api/v1/teams/25/roster')
-    .then(res => res.json())
-    .then(data => console.log(data))
+    // fetch('https://statsapi.web.nhl.com/api/v1/people/8479323/stats?stats=statsSingleSeason&season=20212022')
+    // .then(res => res.json())
+    // .then(data => console.log(data))
       
       // define an array of players with a name and id
       let players = [
       {id: 8474056,},//P.K Subban
-      {id: 8476923,},//Severson
+    //   {id: 8476923,},//Severson
       {id: 8480883,},//Ty smith
       {id: 8475181,},//Leddy
       {id: 8476917,},//Pelech
@@ -105,7 +106,7 @@
       {id: 8479325,},//McAvoy
       {id: 8477499,},//Ristolainen
       {id: 8480839,},//Dahlin
-      {id: 8470642,},//Weber
+    //   {id: 8470642,},//Weber
       {id: 8473507,},//Petry
       {id: 8481014,},//Romanov
       {id: 8478469,},//Chabot
@@ -133,7 +134,7 @@
       {id: 8477507,},//Zadorov
       {id: 8480871,},//Boqvist 
       {id: 8470281,},//Keith
-      {id: 8477043,},//Djoss
+ 
       {id: 8479425,},//Hronek
       {id: 8474600,},//Josi
       {id: 8475176,},//Ellis
@@ -162,7 +163,7 @@
       {id: 8470613,},//Burns
       {id: 8474578,},//Karlsson
       {id: 8479983,},//Ferraro
-      {id: 8481812,},//Knyzhov
+    //   {id: 8481812,},//Knyzhov
       {id: 8478460,},//Werenski
       {id: 8474584,},//Del Zotto
       {id: 8477495,},//Seth Jones
@@ -176,16 +177,18 @@
       {id: 8471274,},//Goligoski
       {id: 8475171,},//OEL
       {id: 8479345,},//Chychrun
-      {id: 8477851,},//Oesterle
+    
       {id: 8474166,},//Martinez
       {id: 8474565,},//Pietrangelo
-      {id: 8477447,},//Theodore
+      
       {id: 8479980,},//Hague
       ]
 
-      Promise.all(players.map((p) => $.ajax({
+ 
+  // for every player in the array, make a call to get their basic player data
+  Promise.all(players.map((p) => $.ajax({
         method: 'GET',
-        async: true, //not ideal, causing slight lag on some load ups but still functional. 
+        async: true, 
         url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/`
         })
   	)
@@ -199,7 +202,7 @@
   	Promise.all(players.map((p) => $.ajax({
         method: 'GET',
         async: true, //see above
-        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/stats?stats=statsSingleSeason&season=20202021`
+        url:`https://statsapi.web.nhl.com/api/v1/people/${p.id}/stats?stats=statsSingleSeason&season=20212022`
         })
     	)
   	)
@@ -209,6 +212,14 @@
     response.forEach((data, index) => { 
     	Object.assign(players[index], data.stats[0].splits[0].stat);
     });
+
+    // console.log(players)
+
+    // <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
+    // { 
+    //   ...player,
+    //   fanPoints: 
+    // }
     
     
     // now that we have all the data, display it in the table
@@ -224,15 +235,21 @@
           return obj;
       }
   }
+
+  async function getFanPoints(players) {
+    return Math.floor(player.wins*2 + player.saves*0.10 + player.shutouts*5)
+  }
 	
 	function buildTable(players) {
 	  let table = document.getElementById('myTable')
         table.innerHTML = ''
     // loop through all players and add their row - note player name and teams are different sections of API**//
     players.forEach((player) => {
+        console.log(player)
     	// const stats = player.stats.stats[0].splits[0].stat;
 	    let row = `<tr> 
-                  <td>${player.fullName}</td>
+            <td>${player.fullName}</td>
+          
                   <td>${player.currentTeam.name}</td>
                   <td>${player.games}</td>
                   <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
@@ -246,8 +263,10 @@
                   <td>${player.timeOnIcePerGame}</td>
                   <td>${player.pim}</td>
                   <td>${player.shotPct}</td>
+                  <td>${player.shortHandedPoints}</td>
                   <td>${player.powerPlayTimeOnIcePerGame}</td>
-	          		</tr>`;
+                  
+                  </tr>`;
                 
 	    table.innerHTML += row
     });
@@ -257,9 +276,9 @@
     $('th').on('click', function() {
         let column = $(this).data('column')
         let order = $(this).data('order')
-        console.log('column was clicked!', column, order)
+       
 
-        if(order == 'asc') {
+        if(order === 'asc') {
             $(this).data('order', 'desc')
             players = players.sort((a,b) =>a[column] > b[column] ? 1 : -1)
         }else{
@@ -270,8 +289,9 @@
         buildTable(players)
     })
 
-    //fetch API info when needed 
-// fetch('https://statsapi.web.nhl.com/api/v1/teams/3/roster')
-//     .then(res => res.json())
-//     .then(data => console.log(data))
+    // fetch API info when needed 
+fetch('https://statsapi.web.nhl.com/api/v1/people/8478460/stats?stats=statsSingleSeason&season=20212022')
+    .then(res => res.json())
+    .then(data => console.log(data))
+
 </script>
