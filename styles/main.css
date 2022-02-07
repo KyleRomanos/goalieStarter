@@ -16,7 +16,7 @@
 
 body{
   
-    background-color:  rgb(0, 0, 28);
+    background-image: linear-gradient(to right, rgb(0,0,28) ,rgb(0,0,38), rgb(0,0,48));
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -59,6 +59,7 @@ nav ul{
     margin-right: auto;
     text-decoration: none;
     display: block;
+    
 
     
 }
@@ -77,7 +78,7 @@ nav ul li{
     overflow: hidden;
     overflow: -moz-hidden-unscrollable;
     float: left;
-    color: whitesmoke;
+    color: red;
     text-decoration: none;
     font-size: 13px;
     position: relative;
@@ -106,6 +107,7 @@ nav{
     margin-right: auto;
     text-decoration: none;
     display: flex;
+
 }
 
 
