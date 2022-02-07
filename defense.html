@@ -1,82 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/table2.css">
-        <link rel="stylesheet" href="styles/menu.css">
-        <link rel="stylesheet" href="styles/wrap.css">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/table2.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/wrap.css">
+
+
     
-    <title>Defense</title>
-    </head>
-    <body>
-        <div class="menu-wrap">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
+  <title>Defense</title>
+</head>
+<body>
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+            <div>
                 <div>
-                    <div>
-                        <ul>
-                            <li class="navbar"><a class ="current" href="index.html">Home</a></li>
-                            <li class="navbar"><a class="current" href="news.html">News</a></li>
-                            <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
-                            <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li class="navbar"><a class ="current" href="index.html">Home</a></li>
+                        <li class="navbar"><a class="current" href="news.html">News</a></li>
+                        <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
+                        <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-        </nav>
-        <div class="btn-group" style="width: 100%">
-            <a href="table2.html" button class="goalies" style="width:35%">Goalies</button></a>
-            <a href="defense.html" button class="defense" style="width:32.5%">Defense</button></a>
-            <a href="forwards.html" button class="forwards" a style="width:32.5%">Forwards</button></a>
-          </div>
-    
-    
-    <!-- <div class="row">
-        <div class="col">
-            <div class="card card-body">
-                <input id="search-input" class="form-control" type="text">
-            </div>
-        </div>
-    </div> -->
-    
-    <div class="leaderboard">
-    <table class="table striped">
-        <thead>
-        <tr class="bg-info">
-            <th data-column="fullName" data-order="desc">Player</th>
-            <th data-column="currentTeam" data-order="desc">Team</th>
-            <th data-column="games" data-order="desc">GP</th>
-            <th data-column="fanPoints" data-order="desc">FP</th>
-            <th data-column="goals" data-order="desc">G</th>
-            <th data-column="assists" data-order="desc">A</th>
-            <th data-column="points" data-order="desc">P</th>
-            <th data-column="powerPlayPoints" data-order="desc">PPP</th>
-            <th data-column="hits" data-order="desc">H</th>
-            <th data-column="blocked" data-order="desc">B</th>
-            <th data-column="shots" data-order="desc">SOG</th>
-            <th data-column="timeOnIcePerGame" data-order="desc">TOI</th>
-            <th data-column="pim" data-order="desc">PIM</th>
-            <th data-column="shotPct" data-order="desc">Sh%</th>
-            <th data-column="shortHandedPoints" data-order="desc">SHP%</th>
-            <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPTOI</th>
-        </tr>
-        </thead>
-    
-        <tbody id="myTable">
-            
-        </tbody>
-    </table>
-    </div>
-    </body>
+</div>
+    </nav>
+    <div class="btn-group" style="width: 100%">
+        <a href="table2.html" button class="goalies" style="width:35%">Goalies</button></a>
+        <a href="defense.html" button class="defense" style="width:32.5%">Defense</button></a>
+        <a href="forwards.html" button class="forwards" a style="width:32.5%">Forwards</button></a>
+      </div>
+
+<div class="leaderboard">
+<table class="table striped">
+  <thead>
+  <tr class="bg-info">
+      <th data-column="fullName" data-order="desc">Player</th>
+      
+      <th data-column="fullName" data-order="desc">Pos</th>
+      <th data-column="currentTeam" data-order="desc">Team</th>
+      <th data-column="games" data-order="desc">GP</th>
+      <th data-column="fanPoints" data-order="desc">FP</th>
+      <th data-column="goals" data-order="desc">G</th>
+      <th data-column="assists" data-order="desc">A</th>
+      <th data-column="points" data-order="desc">P</th>
+      <th data-column="powerPlayPoints" data-order="desc">PPP</th>
+      <th data-column="hits" data-order="desc">H</th>
+      <th data-column="blocked" data-order="desc">B</th>
+      <th data-column="shots" data-order="desc">SOG</th>
+      <th data-column="timeOnIcePerGame" data-order="desc">TOI</th>
+      <th data-column="pim" data-order="desc">PIM</th>
+      <th data-column="shotPct" data-order="desc">Sh%</th>
+      <th data-column="shortHandedPoints" data-order="desc">SHP</th>
+      <th data-column="powerPlayTimeOnIcePerGame" data-order="desc">PPT</th>
+  </tr>
+  </thead>
+
+  <tbody id="myTable">
+      
+  </tbody>
+</table>
+</div>
+</body>
     </html>
     <script>
         let myArray = []
@@ -280,7 +275,7 @@
     	// const stats = player.stats.stats[0].splits[0].stat;
 	    let row = `<tr> 
             <td>${player.fullName}</td>
-          
+            <td>${player.primaryPosition.name}</td>
                   <td>${player.currentTeam.name}</td>
                   <td>${player.games}</td>
                   <td>${Math.floor(player.goals*3 + player.assists*2 + player.powerPlayPoints + player.shortHandedPoints*2 + player.shots*0.10 + player.hits*0.20 + player.blocked*0.20 + player.pim*0.20 + player.gameWinningGoals)}</td>
@@ -320,13 +315,9 @@
         buildTable(players)
     })
 
-    // fetch API info when needed 
-fetch('https://statsapi.web.nhl.com/api/v1/people/8478460/stats?stats=statsSingleSeason&season=20212022')
-    .then(res => res.json())
-    .then(data => console.log(data))
 
-<<<<<<< HEAD
+    //fetch API info when needed 
+// fetch('https://statsapi.web.nhl.com/api/v1/teams/3/roster')
+//     .then(res => res.json())
+//     .then(data => console.log(data))
 </script>
-=======
-</script>
->>>>>>> 89d9da481b29d1d71eac1b526d5d236d02d789c7
