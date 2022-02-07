@@ -120,7 +120,7 @@ nav{
 }
 
 .defense, .forwards {
-    background-image: linear-gradient(to left, rgb(61, 14, 92), rgb(175, 121, 219));
+    background-image: linear-gradient(to left,rgb(61, 8, 92), rgb(128, 69, 161), rgb(175, 121, 219));
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: whitesmoke;
@@ -132,7 +132,7 @@ nav{
 }
 
 .goalies {
-    background-image: linear-gradient(to left, rgb(61, 14, 92), rgb(175, 121, 219));
+    background-image: linear-gradient(to left, rgb(104, 46, 138), rgb(175, 121, 219));
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: whitesmoke;
@@ -157,7 +157,7 @@ top: 0;
 }
 
 th{
-    background-image: linear-gradient(to left, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+    background-image: linear-gradient(to left, rgb(25,25,112) ,rgb(38, 70, 156), rgb(5, 156, 226));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-size: 12px;
