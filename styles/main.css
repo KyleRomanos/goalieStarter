@@ -15,8 +15,8 @@
   } */
 
 body{
-    background-image:  url("https://i.imgur.com/S0JURmF.jpg"); 
-    background-color:  rgb(49, 47, 47);
+  
+    background-color:  rgb(0, 0, 28);
     height: 100vh;
     display: flex;
     flex-direction: column;
