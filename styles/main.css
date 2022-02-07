@@ -65,7 +65,7 @@ nav ul{
 }
 
 nav ul li{
-    background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+    background-image: linear-gradient(to left, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin-left: auto;
@@ -150,14 +150,14 @@ nav{
 }
 
 .bg-info {
- background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+ background-image: linear-gradient(to left, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
  font-size: 12px;
  /* position: sticky; */
 top: 0;
 }
 
 th{
-    background-image: linear-gradient(to right, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
+    background-image: linear-gradient(to left, rgb(25,25,112) ,rgb(38, 70, 156), rgb(95, 196, 243));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-size: 12px;

@@ -138,7 +138,7 @@
     
     color: orange;
     font-size: 2rem;
-    transition: 0.1s ease;
+    transition: 0.05s ease;
   }
   
   .menu-wrap .menu > div > div > ul > li > a {
