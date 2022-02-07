@@ -11,17 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/wrap.css">
     <title>Contact Form</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li class="navbar"><a class ="current" href="index.html">Home</a></li>
-            <li class="navbar"><a class="current" href="news.html">News</a></li>
-            <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
-            <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
-            <br><br>
-    </nav>
+  <div class="menu-wrap">
+    <input type="checkbox" class="toggler">
+    <div class="hamburger"><div></div></div>
+    <div class="menu">
+        <div>
+            <div>
+                <ul>
+                    <li class="navbar"><a class ="current" href="index.html">Home</a></li>
+                    <li class="navbar"><a class="current" href="news.html">News</a></li>
+                    <li class="navbar"><a class="current" href="table2.html">Leaderboards</a></li>
+                    <li class="navbar"><a class ="current" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
  
         <div class="contact-form">
       
@@ -37,7 +49,7 @@
     </div>
     <div class="msg">
       <textarea name="message" placeholder="Message"></textarea>
-      <button type="submit" class="btn">send</div>
+      <button style="width:100%" type="submit" class="btn">send</div>
     </div>
   </div>
 </div>
