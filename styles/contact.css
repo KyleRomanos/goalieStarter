@@ -9,8 +9,8 @@
 }
 
 .contact-form{
-    max-width: 550px;
-    width: 500px;
+    max-width: 600px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -81,101 +81,13 @@
 }
 
 
-
-
-
-@media screen and (max-width: 550px) {
-   
-    .contact-form {
-        display: block;
-        text-align: center;
-        box-shadow: none;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-    .input-fields, .msg {
-        
-        text-align: left;
-        align-items: center;
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        width: 100%;
-    }
-
-    }
-
-    @media screen and (max-width: 800px) {
-
-        .contact-form {
-            display: block;
-            text-align: center;
-            box-shadow: none;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-        }
-        .input-fields, .msg {
-            margin-top: 10px;
-            text-align: center;
-            display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-                
-            }
-
-    @media screen and (max-width: 400px) {
-        .input-fields, .msg {
-        
-            text-align: left;
-            align-items: left;
-            display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10px;
-            width: 90%;
-        }
-
-        .contact-form {
-            width: 300px;
-         
-        }
-
-        .btn {
-            margin-left: 10px;
-            margin-right: auto;
-            align-items: center;
-            align-self: center;
-            display: block;
-        }
-    }
-
-       .contact-form {
-           width: 325px;
-        
-       }
-
-       
-       @media screen and (max-width: 360px) {
-       .input-fields, .msg {
-        
-        text-align: left;
-        align-items: left;
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: -5px;
-        font-size: 10px;
-        width: 90%;
-    }
+@media screen and (max-width: 600px) {
 
     .contact-form {
-        width: 250px;
-     
+    max-width: 400px;
+    width: 400px;
+    margin-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
     }
-
 }
-        
