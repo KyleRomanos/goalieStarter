@@ -71,3 +71,7 @@ body {
 .btn:hover {
     opacity: 0.7;
   }
+
+.navbar:hover{
+    color: orange;
+}
