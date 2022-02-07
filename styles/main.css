@@ -15,6 +15,7 @@
   } */
 
 body{
+    background-image:  url("https://i.imgur.com/S0JURmF.jpg"); 
     background-color:  rgb(49, 47, 47);
     height: 100vh;
     display: flex;
@@ -93,7 +94,7 @@ nav ul li:hover{
 }
 
 nav ul li:active{
-    background: orange;
+    background: rgb(175, 126, 21);
     cursor: pointer;
     font-size: 20px;
     text-decoration: none;
@@ -116,20 +117,34 @@ nav{
     top: 1;
 }
 
-.goalies, .defense, .forwards {
+.defense, .forwards {
     background-image: linear-gradient(to left, rgb(61, 14, 92), rgb(175, 121, 219));
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: whitesmoke;
-    font-size: 12px;
+    font-size: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    border: 1px solid whitesmoke;
+    transition: all 500ms ease;
+}
+
+.goalies {
+    background-image: linear-gradient(to left, rgb(61, 14, 92), rgb(175, 121, 219));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: whitesmoke;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    border: 1px solid whitesmoke;
     transition: all 500ms ease;
 }
 
 .goalies:hover, .defense:hover, .forwards:hover {
-    background: rgb(79, 184, 119);
-    font-size: 11px;       
+    color: orange;
+    font-size: 13px;       
 }
 
 .bg-info {
